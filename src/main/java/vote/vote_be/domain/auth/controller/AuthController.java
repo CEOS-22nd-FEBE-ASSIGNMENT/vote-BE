@@ -38,9 +38,9 @@ public class AuthController {
         var cookie = CookieUtil.buildRefreshCookie(
                 result.getRefreshToken(),
                 result.getRefreshTtlSec(),
-                "",
-                false,
-                "LAX"
+                null,
+                true,
+                "None"
         );
         response.addHeader("Set-Cookie", cookie.toString());
 
@@ -53,9 +53,9 @@ public class AuthController {
     public ApiResponse<SimpleMessageDTO> logout(HttpServletRequest request, HttpServletResponse response) {
 
         var del = CookieUtil.deleteRefreshCookie(
-                "",
-                false,
-                "Lax"
+                null,
+                true,
+                "None"
         );
         response.addHeader("Set-Cookie", del.toString());
 
